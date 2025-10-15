@@ -207,27 +207,26 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
+    window:
+        style "choice_window"
+
+        vbox:
+            spacing gui.choice_spacing
+            xalign 0.5
+            yalign 0.5   # <--- centra las opciones dentro del recuadro
+            for i in items:
+                textbutton i.caption action i.action
 
 
-style choice_vbox is vbox
-style choice_button is button
-style choice_button_text is button_text
-
-style choice_vbox:
+style choice_window is window:
     xalign 0.5
-    ypos 405
-    yanchor 0.5
+    yalign 1.0
+    xfill True
+    yminimum gui.textbox_height
+    background Frame("gui/textbox.png", 12, 12)
+    padding (0, 40, 0, 40)   # <--- agrega margen interno arriba y abajo
 
-    spacing gui.choice_spacing
 
-style choice_button is default:
-    properties gui.button_properties("choice_button")
-
-style choice_button_text is default:
-    properties gui.text_properties("choice_button")
 
 
 ## Quick Menu screen ###########################################################
